@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="partie3.dac.controller.Sprint3FinalController"
+            prefWidth="1000" prefHeight="700" style="-fx-background-color: #f4f7f6;">
+    <top>
+        <VBox spacing="6">
+            <padding><Insets top="15" right="15" bottom="10" left="15"/></padding>
+            <Label text="📊 ANALYSEUR DE TEXTE PROFESSIONNEL - SPRINT 3" 
+                   style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 10 0;"/>
+            <HBox spacing="10">
+                <Button fx:id="btnImporter" text="📂 IMPORTER" onAction="#importerFichiers" 
+                        style="-fx-font-weight: bold; -fx-background-radius: 5;"/>
+                <Button fx:id="btnAfficher" text="👁️ AFFICHER" onAction="#afficherContenuFichier" 
+                        style="-fx-font-weight: bold; -fx-background-radius: 5;"/>
+                <Button fx:id="btnSupprimer" text="🗑️ SUPPRIMER" onAction="#supprimerFichier" 
+                        style="-fx-font-weight: bold; -fx-background-radius: 5;"/>
+                <Separator orientation="VERTICAL" />
+                <Button fx:id="btnAnalyser" text="⚡ ANALYSER" onAction="#analyserFichierSelectionne" 
+                        style="-fx-font-weight: bold; -fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                <Button fx:id="btnAnalyserTous" text="🚀 ANALYSER TOUT" onAction="#analyserTous" 
+                        style="-fx-font-weight: bold; -fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                <Button fx:id="btnVider" text="🧹 VIDER" onAction="#viderZone" 
+                        style="-fx-font-weight: bold; -fx-background-radius: 5;"/>
+                <Button fx:id="btnSauvegarder" text="💾 SAUVEGARDER" onAction="#sauvegarderResultat" 
+                        style="-fx-font-weight: bold; -fx-background-radius: 5;"/>
+                <Button fx:id="btnQuitter" text="❌ QUITTER" onAction="#quitterApplication" 
+                        style="-fx-font-weight: bold; -fx-background-color: #c0392b; -fx-text-fill: white; -fx-background-radius: 5;"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <SplitPane dividerPositions="0.35" style="-fx-background-color: transparent;">
+            <VBox spacing="8">
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <Label text="LISTE DES FICHIERS" style="-fx-font-weight: bold; -fx-text-fill: #7f8c8d;"/>
+                <TableView fx:id="tableFichiers" prefHeight="520" style="-fx-selection-bar: #3498db;">
+                    <columns>
+                        <TableColumn fx:id="colNomFichier" text="NOM" prefWidth="150"/>
+                        <TableColumn fx:id="colTailleFichier" text="TAILLE" prefWidth="100"/>
+                        <TableColumn fx:id="colCheminFichier" text="CHEMIN" prefWidth="250"/>
+                    </columns>
+                </TableView>
+            </VBox>
+            <VBox spacing="10">
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <Label text="📝 APERÇU DU TEXTE" style="-fx-font-weight: bold; -fx-text-fill: #7f8c8d;"/>
+                <TextArea fx:id="zoneContenu" prefHeight="240" editable="false" 
+                          style="-fx-font-family: 'Monospaced'; -fx-font-size: 13px; -fx-control-inner-background: #ffffff;"/>
+                
+                <Label text="🎯 RÉSULTATS DÉTAILLÉS" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <TextArea fx:id="zoneResultat" prefHeight="240" editable="false" 
+                          style="-fx-font-family: 'Consolas', 'Monospaced'; -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #000000; -fx-control-inner-background: #fdfdfd; -fx-border-color: #2c3e50; -fx-border-width: 2;"/>
+            </VBox>
+        </SplitPane>
+    </center>
+    <bottom>
+        <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: #2c3e50;">
+            <padding><Insets top="12" right="15" bottom="12" left="15"/></padding>
+            <Label fx:id="labelStatut" text="Prêt." prefWidth="280" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+            <ProgressBar fx:id="barreProgression" prefWidth="400" progress="0.0" style="-fx-accent: #27ae60;"/>
+            <Label fx:id="labelTemps" text="⏱️ Temps : 0 ms" style="-fx-text-fill: #ecf0f1; -fx-font-weight: bold;"/>
+        </HBox>
+    </bottom>
+</BorderPane>
